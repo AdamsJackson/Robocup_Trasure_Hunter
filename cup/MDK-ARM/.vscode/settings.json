@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "stdint.h": "c",
+        "motor.h": "c",
+        "servo.h": "c",
+        "grayscale_traces.h": "c",
+        "color_scales.h": "c",
+        "voice.h": "c"
+    }
+}
