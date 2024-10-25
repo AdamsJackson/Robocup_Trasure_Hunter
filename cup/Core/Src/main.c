@@ -143,25 +143,7 @@ int main(void)
   {
 		
     /* USER CODE END WHILE */
-			
-			Grayscale_Read();
-		/*只通过亮灯个数判断有些草率了，我们需要添加 -> 当中间俩直行*/
-			if(sum_E > 5 ) 
-			{
-					go_forward(200,Straight_Quick);
-					HAL_Delay(10);
-				
-			}
-//			else if(sum_E > 5 && E5 == 0)
-//			{
-//					go_forward(200,Straight_Quick);
-//					HAL_Delay(10);
-//			}
-			else if(sum_E <= 5)
-			{
-				turn_to_white_line();
-				HAL_Delay(50);
-			}
+		
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
