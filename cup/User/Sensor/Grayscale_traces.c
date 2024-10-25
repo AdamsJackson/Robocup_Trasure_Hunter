@@ -5,18 +5,44 @@
  *  HY1     HY2       HY3       HY4     HY5     HY6     HY7     HY8
  *  PB6     PG15      PG13      PG11    PG9     PD7     PD4     PD1
  */
-int g1,g2,g3,g4,g5,g6,g7,g8,sum_g; // 8个传感器数据储存值
+int E1,E2,E3,E4,E5,E6,E7,E8,sum_E; // 8个传感器数据储存值
+
+
 //根据引脚状态 reset = 0； set = 1. 
 void Grayscale_Read(void)
 { 
-    g1 = HAL_GPIO_ReadPin(HY1_GPIO_Port,HY1_Pin);
-    g2 = HAL_GPIO_ReadPin(HY2_GPIO_Port,HY2_Pin);
-    g3 = HAL_GPIO_ReadPin(HY3_GPIO_Port,HY3_Pin);
-    g4 = HAL_GPIO_ReadPin(HY4_GPIO_Port,HY4_Pin);
-    g5 = HAL_GPIO_ReadPin(HY5_GPIO_Port,HY5_Pin);
-    g6 = HAL_GPIO_ReadPin(HY6_GPIO_Port,HY6_Pin);
-    g7 = HAL_GPIO_ReadPin(HY7_GPIO_Port,HY7_Pin);
-    g8 = HAL_GPIO_ReadPin(HY8_GPIO_Port,HY8_Pin);
-    sum_g = g1+g2+g3+g4+g5+g6+g7+g8;
+    E1 = HAL_GPIO_ReadPin(E1_GPIO_Port,E1_Pin);
+    E2 = HAL_GPIO_ReadPin(E2_GPIO_Port,E2_Pin);
+    E3 = HAL_GPIO_ReadPin(E3_GPIO_Port,E3_Pin);
+    E4 = HAL_GPIO_ReadPin(E4_GPIO_Port,E4_Pin);
+    E5 = HAL_GPIO_ReadPin(E5_GPIO_Port,E5_Pin);
+    E6 = HAL_GPIO_ReadPin(E6_GPIO_Port,E6_Pin);
+    E7 = HAL_GPIO_ReadPin(E7_GPIO_Port,E7_Pin);
+    E8 = HAL_GPIO_ReadPin(E8_GPIO_Port,E8_Pin);
+    sum_E = E1+E2+E3+E4+E5+E6+E7+E8;
 }
-
+PID_TYPE Grayscale_flag_change(void)
+{
+	Grayscale_Read();
+	if(sum_E==8)
+	{
+		return Disable;
+	}
+	else if(sum_E==7)
+	{
+		return Straight_Quick;
+	}
+	else if(sum_E==6)
+	{
+		return Straight_Slow;
+	}
+	else if(sum_E==5)
+	{
+		return S_Curve;
+	}
+	else if(sum_E<5)
+	{
+		return Disable;
+	}
+	return Disable;
+}

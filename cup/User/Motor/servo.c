@@ -8,6 +8,7 @@
  * 通道             CH3     CH4    CH1        CH1     CH1
  * 
  * 已经设置了 周期为20ms 方便控制舵机 500->45°
+ * 身体升降舵机范围占空比20/1000-70/1000
  */
 extern TIM_HandleTypeDef htim2;
 extern TIM_HandleTypeDef htim13;
@@ -17,17 +18,19 @@ void servo_init(void)
     //开启时钟通道 然后控制时间
     HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_3);
     HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_4);
+    HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);
+
     HAL_TIM_PWM_Start(&htim13, TIM_CHANNEL_1);
     HAL_TIM_PWM_Start(&htim14, TIM_CHANNEL_1);
 }
 
 void servo_hands(void)
 {
-    __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_3, 1500);
-    __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_4, 1500);
+    __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, 1500);
+    __HAL_TIM_SET_COMPARE(&htim13, TIM_CHANNEL_1, 1500);
     HAL_Delay(100);
-    __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_3, 500);
-    __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_4, 500);
+    __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_1, 500);
+    __HAL_TIM_SET_COMPARE(&htim13, TIM_CHANNEL_1, 500);
 }
 
 void servo_head(void)
@@ -35,4 +38,14 @@ void servo_head(void)
     __HAL_TIM_SET_COMPARE(&htim13,TIM_CHANNEL_1,1500);
     HAL_Delay(100);
     __HAL_TIM_SET_COMPARE(&htim13,TIM_CHANNEL_1,500);
+}
+
+void body_up()
+{
+	//__HAL_TIM_SET_COMPARE(&htim14,TIM_CHANNEL_1,);
+	
+}
+void body_down()
+{
+	//__HAL_TIM_SET_COMPARE(&htim14,TIM_CHANNEL_1,);
 }

@@ -35,4 +35,10 @@ cup\motor.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 cup\motor.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 cup\motor.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 cup\motor.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_usart.h
+cup\motor.o: ../User/Motor/pid.h
+cup\motor.o: ../User/Mpu/mpu.h
+cup\motor.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+cup\motor.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+cup\motor.o: ../Core/Inc/main.h
 cup\motor.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+cup\motor.o: ../User/Sensor/Color_scales.h

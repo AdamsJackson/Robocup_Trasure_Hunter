@@ -21,19 +21,26 @@ Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.1.0
 Dialog DLL:      TCM.DLL V1.32.0.0
  
 <h2>Project:</h2>
-D:\Rmer\robocup\Robocup_Trasure_Hunter\cup\MDK-ARM\cup.uvprojx
-Project File Date:  10/21/2024
+D:\Desktop\cup\MDK-ARM\cup.uvprojx
+Project File Date:  10/23/2024
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 5 (build 528)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'cup'
 compiling Color_scales.c...
-compiling voice.c...
-compiling Grayscale_traces.c...
+..\User\Sensor\Color_scales.c(20): warning:  #1-D: last line of file ends without a newline
+  }
+..\User\Sensor\Color_scales.c: 1 warning, 0 errors
+compiling motor.c...
+..\User\Motor\motor.c(153): warning:  #223-D: function "abs" declared implicitly
+  	ang_last = abs(GY95->yaw);
+..\User\Motor\motor.c(187): warning:  #223-D: function "abs" declared implicitly
+  	ang_last = abs(GY95->yaw);
+..\User\Motor\motor.c: 2 warnings, 0 errors
 linking...
-Program Size: Code=9772 RO-data=448 RW-data=24 ZI-data=2744  
+Program Size: Code=11128 RO-data=448 RW-data=76 ZI-data=2100  
 FromELF: creating hex file...
-"cup\cup.axf" - 0 Error(s), 0 Warning(s).
+"cup\cup.axf" - 0 Error(s), 3 Warning(s).
 
 <h2>Software Packages used:</h2>
 

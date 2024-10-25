@@ -35,3 +35,8 @@ cup\gpio.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 cup\gpio.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 cup\gpio.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 cup\gpio.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_usart.h
+cup\gpio.o: ../User/Motor/pid.h
+cup\gpio.o: ../User/Mpu/mpu.h
+cup\gpio.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+cup\gpio.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+cup\gpio.o: ../Core/Inc/main.h

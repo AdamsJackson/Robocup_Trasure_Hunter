@@ -163,7 +163,7 @@ void HAL_USART_MspInit(USART_HandleTypeDef* usartHandle)
     /**USART3 GPIO Configuration
     PD8     ------> USART3_TX
     PD9     ------> USART3_RX
-    PC12     ------> USART3_CK
+    PC12     ------> USART3_CK	
     */
     GPIO_InitStruct.Pin = IMU_TX_Pin|IMU_RX_Pin;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;

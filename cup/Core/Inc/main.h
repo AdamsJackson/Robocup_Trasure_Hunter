@@ -31,17 +31,41 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "pid.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
 /* USER CODE BEGIN ET */
-
+#define add 0xa4
 /* USER CODE END ET */
 
 /* Exported constants --------------------------------------------------------*/
 /* USER CODE BEGIN EC */
+	/* PID的模式枚举 */
+typedef enum 
+{
+	Disable		   			 = 0,
+	Straight_Quick  	 = 1,
+	Straight_Slow   	 = 2,
+	S_Curve				 		 = 3,
+}PID_TYPE;
+/* adjust模式的枚举 */
+typedef enum  
+{
+	AD_Disable		   	 = 0,
+	AD_UpBridge        = 1,
+	AD_OnBridge        = 2,
+	AD_DownBridge      = 3,
+	AD_Seesaw          = 4,
+}AD_TYPE;
 
+typedef struct _flag {
+	int 				MPU_flag;  					//6050读取flag
+	PID_TYPE  	pid_flag; 					//pid循迹flag
+	int 				timer_flag;					//定时器1flag
+	int 				timer8_flag;					//定时器8flag
+	AD_TYPE  		adjust_flag;				//色标调整flag
+}flag_ST;
 /* USER CODE END EC */
 
 /* Exported macro ------------------------------------------------------------*/
@@ -147,30 +171,30 @@ void Error_Handler(void);
 #define OLED_SCL_GPIO_Port GPIOA
 #define DBG_TX_Pin GPIO_PIN_9
 #define DBG_TX_GPIO_Port GPIOA
-#define HY8_Pin GPIO_PIN_1
-#define HY8_GPIO_Port GPIOD
-#define HY7_Pin GPIO_PIN_4
-#define HY7_GPIO_Port GPIOD
-#define HY6_Pin GPIO_PIN_7
-#define HY6_GPIO_Port GPIOD
-#define HY5_Pin GPIO_PIN_9
-#define HY5_GPIO_Port GPIOG
+#define E8_Pin GPIO_PIN_1
+#define E8_GPIO_Port GPIOD
+#define E7_Pin GPIO_PIN_4
+#define E7_GPIO_Port GPIOD
+#define E6_Pin GPIO_PIN_7
+#define E6_GPIO_Port GPIOD
+#define E5_Pin GPIO_PIN_9
+#define E5_GPIO_Port GPIOG
 #define SW5_Pin GPIO_PIN_10
 #define SW5_GPIO_Port GPIOG
-#define HY4_Pin GPIO_PIN_11
-#define HY4_GPIO_Port GPIOG
+#define E4_Pin GPIO_PIN_11
+#define E4_GPIO_Port GPIOG
 #define SW6_Pin GPIO_PIN_12
 #define SW6_GPIO_Port GPIOG
-#define HY3_Pin GPIO_PIN_13
-#define HY3_GPIO_Port GPIOG
+#define E3_Pin GPIO_PIN_13
+#define E3_GPIO_Port GPIOG
 #define SW7_Pin GPIO_PIN_14
 #define SW7_GPIO_Port GPIOG
-#define HY2_Pin GPIO_PIN_15
-#define HY2_GPIO_Port GPIOG
+#define E2_Pin GPIO_PIN_15
+#define E2_GPIO_Port GPIOG
 #define SW8_Pin GPIO_PIN_3
 #define SW8_GPIO_Port GPIOB
-#define HY1_Pin GPIO_PIN_6
-#define HY1_GPIO_Port GPIOB
+#define E1_Pin GPIO_PIN_6
+#define E1_GPIO_Port GPIOB
 #define GD1_Pin GPIO_PIN_8
 #define GD1_GPIO_Port GPIOB
 #define GD2_Pin GPIO_PIN_9

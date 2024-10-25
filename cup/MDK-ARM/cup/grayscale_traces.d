@@ -35,3 +35,8 @@ cup\grayscale_traces.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 cup\grayscale_traces.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 cup\grayscale_traces.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 cup\grayscale_traces.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_usart.h
+cup\grayscale_traces.o: ../User/Motor/pid.h
+cup\grayscale_traces.o: ../User/Mpu/mpu.h
+cup\grayscale_traces.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+cup\grayscale_traces.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+cup\grayscale_traces.o: ../Core/Inc/main.h

@@ -30,6 +30,10 @@
 #include "chassis_task.h"
 #include "gimbal_task.h"
 #include "servo.h"
+#include <stdint.h>
+#include "pid.h"
+#include "Grayscale_traces.h"
+#include "chassis_task.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -39,12 +43,15 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-extern gy my_95Q;
-extern uint8_t usart_rx_data;
-extern uint8_t Receive_ok;
+extern struct GY_95_t GY95T;
+extern GY_95_t myGY95;
+flag_ST flag = {0,Disable,0,0,AD_Disable}; //��־λ�ṹ��:MPU--PID---timer1---adjust
+extern int E1,E2,E3,E4,E5,E6,E7,E8,sum_E;
+//
 
 /* USER CODE END PD */
-
+uint8_t rx_Data[7];
+uint16_t a;
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
 
@@ -73,7 +80,6 @@ void SystemClock_Config(void);
   */
 int main(void)
 {
-
   /* USER CODE BEGIN 1 */
 
   /* USER CODE END 1 */
@@ -81,7 +87,7 @@ int main(void)
   /* MCU Configuration--------------------------------------------------------*/
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-  HAL_Init();
+		HAL_Init();
 
   /* USER CODE BEGIN Init */
 
@@ -111,15 +117,51 @@ int main(void)
   MX_USART3_Init();
   MX_USART6_Init();
   /* USER CODE BEGIN 2 */
+	motor_init();
+	//go_forward(600);
+  servo_init();
+	
 
+	//motor_set_speed(500,500,500,500);
+	
+	//go_forward(700,Straight_Slow);
+//	Grayscale_Read();
+//		HAL_Delay(100);
+//		if(sum_E >= 5)
+//		{
+//			go_forward(800,Straight_Quick);
+//		}
+//		else
+//		{
+//			
+//		}
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+		
     /* USER CODE END WHILE */
-
+			
+			Grayscale_Read();
+		/*只通过亮灯个数判断有些草率了，我们需要添加 -> 当中间俩直行*/
+			if(sum_E > 5 ) 
+			{
+					go_forward(200,Straight_Quick);
+					HAL_Delay(10);
+				
+			}
+//			else if(sum_E > 5 && E5 == 0)
+//			{
+//					go_forward(200,Straight_Quick);
+//					HAL_Delay(10);
+//			}
+			else if(sum_E <= 5)
+			{
+				turn_to_white_line();
+				HAL_Delay(50);
+			}
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
@@ -170,7 +212,7 @@ void SystemClock_Config(void)
     Error_Handler();
   }
 }
-
+//SUM -> 什么sum
 /* USER CODE BEGIN 4 */
 uint16_t USART_ReceiveData(USART_TypeDef* USARTx)
 {

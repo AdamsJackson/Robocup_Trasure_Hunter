@@ -29,13 +29,14 @@
 "cup\system_stm32f4xx.o"
 "cup\motor.o"
 "cup\servo.o"
+"cup\pid.o"
 "cup\mpu.o"
 "cup\chassis_task.o"
 "cup\gimbal_task.o"
 "cup\color_scales.o"
 "cup\grayscale_traces.o"
 "cup\voice.o"
---strict --scatter "cup\cup.sct"
+--library_type=microlib --strict --scatter "cup\cup.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
 --list "cup.map" -o cup\cup.axf

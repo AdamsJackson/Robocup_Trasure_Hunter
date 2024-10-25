@@ -35,3 +35,8 @@ cup\i2c.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 cup\i2c.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 cup\i2c.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 cup\i2c.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_usart.h
+cup\i2c.o: ../User/Motor/pid.h
+cup\i2c.o: ../User/Mpu/mpu.h
+cup\i2c.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+cup\i2c.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+cup\i2c.o: ../Core/Inc/main.h
